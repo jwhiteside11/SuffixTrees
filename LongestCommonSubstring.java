@@ -51,7 +51,8 @@ public class LongestCommonSubstring {
         return maxLen;
     }
 
-// Kasai's algo O(n) -> https://www.lintcode.com/problem/longest-common-substring/discuss/
+// Kasai's algo O(n) -> http://web.cs.iastate.edu/~cs548/references/linear_lcp.pdf 
+//                      https://codeforces.com/blog/entry/12796
 // Uses suffix array and inverted SA (rank) to find lcp array in linear time
 
     public int[] lcp(String s, int[] sA, int n) {
@@ -73,7 +74,8 @@ public class LongestCommonSubstring {
         return lcp;
     }
 
-// DC3 algo O(n) -> http://www.mi.fu-berlin.de/wiki/pub/ABI/SS13Lecture3Materials/script.pdf
+// DC3 algo O(n) -> https://www.cs.helsinki.fi/u/tpkarkka/publications/jacm05-revised.pdf 
+//                  http://www.mi.fu-berlin.de/wiki/pub/ABI/SS13Lecture3Materials/script.pdf
 
     public int[] suffixArray(int[] input, int n, int K) {
         int n0 = (n + 2) / 3, n1 = (n + 1) / 3, n2 = n / 3, n02 = n0 + n2;
