@@ -38,14 +38,15 @@ public class LongestCommonSubstring {
         if (t.contains(s)) return s.length();
 
         String concat = s + "$" + t;
-        int[] digitized = encodeString(concat, m + n + 1);
-        int[] suffixArray = suffixArray(digitized, m + n + 1, 255);
-        int[] lcp = lcp(concat, suffixArray, m + n + 1);
+        int cc = n + m + 1;
+        int[] digitized = encodeString(concat, cc);
+        int[] suffixArray = suffixArray(digitized, cc, 255);
+        int[] lcp = lcp(concat, suffixArray, cc);
 
         // Find longest common substring from suffix array and lcp
         int maxLen = 0;
         for (int i = 1; i < m + n; ++i) {
-            if ((suffixArray[i] < n && suffixArray[i+1] < n) || suffixArray[i] > n && suffixArray[i+1] > n) continue;
+            if ((suffixArray[i] < n && suffixArray[i+1] < n) || (suffixArray[i] > n && suffixArray[i+1] > n)) continue;
             maxLen = Math.max(lcp[i], maxLen);
         }
         return maxLen;
